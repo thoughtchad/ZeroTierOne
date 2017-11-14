@@ -7,9 +7,9 @@ EXPOSE 9993/udp
 ADD nodesource-el.repo /etc/yum.repos.d/nodesource-el.repo
 RUN yum -y update && yum install -y nodejs && yum clean all
 
-RUN mkdir -p /var/lib/zerotier-one
-RUN mkdir -p /var/lib/zerotier-one/networks.d
-RUN touch /var/lib/zerotier-one/networks.d/ffffffffffffffff.conf
+RUN mkdir -p /app/vendor/zerotier-one
+RUN mkdir -p /app/vendor/zerotier-one/networks.d
+RUN touch /app/vendor/zerotier-one/networks.d/ffffffffffffffff.conf
 
 ADD package.json /
 RUN npm install

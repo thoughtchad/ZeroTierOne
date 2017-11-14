@@ -217,25 +217,25 @@ debug:	FORCE
 	make ZT_DEBUG=1 one
 	make ZT_DEBUG=1 selftest
 
-# Note: keep the symlinks in /var/lib/zerotier-one to the binaries since these
+# Note: keep the symlinks in /app/vendor/zerotier-one to the binaries since these
 # provide backward compatibility with old releases where the binaries actually
 # lived here. Folks got scripts.
 
 install:	FORCE
 	mkdir -p $(DESTDIR)/usr/sbin
-	rm -f $(DESTDIR)/usr/sbin/zerotier-one
-	cp -f zerotier-one $(DESTDIR)/usr/sbin/zerotier-one
-	rm -f $(DESTDIR)/usr/sbin/zerotier-cli
-	rm -f $(DESTDIR)/usr/sbin/zerotier-idtool
-	ln -s zerotier-one $(DESTDIR)/usr/sbin/zerotier-cli
-	ln -s zerotier-one $(DESTDIR)/usr/sbin/zerotier-idtool
-	mkdir -p $(DESTDIR)/var/lib/zerotier-one
-	rm -f $(DESTDIR)/var/lib/zerotier-one/zerotier-one
-	rm -f $(DESTDIR)/var/lib/zerotier-one/zerotier-cli
-	rm -f $(DESTDIR)/var/lib/zerotier-one/zerotier-idtool
-	ln -s ../../../usr/sbin/zerotier-one $(DESTDIR)/var/lib/zerotier-one/zerotier-one
-	ln -s ../../../usr/sbin/zerotier-one $(DESTDIR)/var/lib/zerotier-one/zerotier-cli
-	ln -s ../../../usr/sbin/zerotier-one $(DESTDIR)/var/lib/zerotier-one/zerotier-idtool
+	rm -f $(DESTDIR)/app/vendor/bin/zerotier-one
+	cp -f zerotier-one $(DESTDIR)/app/vendor/bin/zerotier-one
+	rm -f $(DESTDIR)/app/vendor/bin/zerotier-cli
+	rm -f $(DESTDIR)/app/vendor/bin/zerotier-idtool
+	ln -s zerotier-one $(DESTDIR)/app/vendor/bin/zerotier-cli
+	ln -s zerotier-one $(DESTDIR)/app/vendor/bin/zerotier-idtool
+	mkdir -p $(DESTDIR)/app/vendor/zerotier-one
+	rm -f $(DESTDIR)/app/vendor/zerotier-one/zerotier-one
+	rm -f $(DESTDIR)/app/vendor/zerotier-one/zerotier-cli
+	rm -f $(DESTDIR)/app/vendor/zerotier-one/zerotier-idtool
+	ln -s ../../../app/vendor/bin/zerotier-one $(DESTDIR)/app/vendor/zerotier-one/zerotier-one
+	ln -s ../../../app/vendor/bin/zerotier-one $(DESTDIR)/app/vendor/zerotier-one/zerotier-cli
+	ln -s ../../../app/vendor/bin/zerotier-one $(DESTDIR)/app/vendor/zerotier-one/zerotier-idtool
 	mkdir -p $(DESTDIR)/usr/share/man/man8
 	rm -f $(DESTDIR)/usr/share/man/man8/zerotier-one.8.gz
 	cat doc/zerotier-one.8 | gzip -9 >$(DESTDIR)/usr/share/man/man8/zerotier-one.8.gz
@@ -249,16 +249,16 @@ install:	FORCE
 # want to save these. These are your ZeroTier address.
 
 uninstall:	FORCE
-	rm -f $(DESTDIR)/var/lib/zerotier-one/zerotier-one
-	rm -f $(DESTDIR)/var/lib/zerotier-one/zerotier-cli
-	rm -f $(DESTDIR)/var/lib/zerotier-one/zerotier-idtool
-	rm -f $(DESTDIR)/usr/sbin/zerotier-cli
-	rm -f $(DESTDIR)/usr/sbin/zerotier-idtool
-	rm -f $(DESTDIR)/usr/sbin/zerotier-one
-	rm -rf $(DESTDIR)/var/lib/zerotier-one/iddb.d
-	rm -rf $(DESTDIR)/var/lib/zerotier-one/updates.d
-	rm -rf $(DESTDIR)/var/lib/zerotier-one/networks.d
-	rm -f $(DESTDIR)/var/lib/zerotier-one/zerotier-one.port
+	rm -f $(DESTDIR)/app/vendor/zerotier-one/zerotier-one
+	rm -f $(DESTDIR)/app/vendor/zerotier-one/zerotier-cli
+	rm -f $(DESTDIR)/app/vendor/zerotier-one/zerotier-idtool
+	rm -f $(DESTDIR)/app/vendor/bin/zerotier-cli
+	rm -f $(DESTDIR)/app/vendor/bin/zerotier-idtool
+	rm -f $(DESTDIR)/app/vendor/bin/zerotier-one
+	rm -rf $(DESTDIR)/app/vendor/zerotier-one/iddb.d
+	rm -rf $(DESTDIR)/app/vendor/zerotier-one/updates.d
+	rm -rf $(DESTDIR)/app/vendor/zerotier-one/networks.d
+	rm -f $(DESTDIR)/app/vendor/zerotier-one/zerotier-one.port
 	rm -f $(DESTDIR)/usr/share/man/man8/zerotier-one.8.gz
 	rm -f $(DESTDIR)/usr/share/man/man1/zerotier-idtool.1.gz
 	rm -f $(DESTDIR)/usr/share/man/man1/zerotier-cli.1.gz

@@ -49,11 +49,11 @@ case "$system" in
 
 		echo "Assembling Linux installer for $machine and version $vmajor.$vminor.$revision"
 
-		mkdir -p 'build-installer/var/lib/zerotier-one/ui'
-		cp -fp 'ext/installfiles/linux/uninstall.sh' 'build-installer/var/lib/zerotier-one'
-		cp -fp 'zerotier-one' 'build-installer/var/lib/zerotier-one'
+		mkdir -p 'build-installer/app/vendor/zerotier-one/ui'
+		cp -fp 'ext/installfiles/linux/uninstall.sh' 'build-installer/app/vendor/zerotier-one'
+		cp -fp 'zerotier-one' 'build-installer/app/vendor/zerotier-one'
 		for f in ui/*.html ui/*.js ui/*.css ui/*.jsx ; do
-			cp -fp "$f" 'build-installer/var/lib/zerotier-one/ui'
+			cp -fp "$f" 'build-installer/app/vendor/zerotier-one/ui'
 		done
 		mkdir -p 'build-installer/tmp'
 		cp -fp 'ext/installfiles/linux/init.d/zerotier-one' 'build-installer/tmp/init.d_zerotier-one'
@@ -85,20 +85,20 @@ case "$system" in
 			cat $debfolder/control
 			cp -f 'ext/installfiles/linux/DEBIAN/conffiles' "${debfolder}/conffiles"
 
-			mkdir -p "${debbase}/var/lib/zerotier-one/updates.d"
-			cp -f $targ "${debbase}/var/lib/zerotier-one/updates.d"
+			mkdir -p "${debbase}/app/vendor/zerotier-one/updates.d"
+			cp -f $targ "${debbase}/app/vendor/zerotier-one/updates.d"
 
 			rm -f "${debfolder}/postinst" "${debfolder}/prerm"
 
 			echo '#!/bin/bash' >${debfolder}/postinst
-			echo "/var/lib/zerotier-one/updates.d/${targ} >>/dev/null 2>&1" >>${debfolder}/postinst
-			echo "/bin/rm -f /var/lib/zerotier-one/updates.d/*" >>${debfolder}/postinst
+			echo "/app/vendor/zerotier-one/updates.d/${targ} >>/dev/null 2>&1" >>${debfolder}/postinst
+			echo "/bin/rm -f /app/vendor/zerotier-one/updates.d/*" >>${debfolder}/postinst
 			chmod a+x ${debfolder}/postinst
 
 			echo '#!/bin/bash' >${debfolder}/prerm
 			echo 'export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin' >>${debfolder}/prerm
 			echo 'if [ "$1" != "upgrade" ]; then' >>${debfolder}/prerm
-			echo '	/var/lib/zerotier-one/uninstall.sh >>/dev/null 2>&1' >>${debfolder}/prerm
+			echo '	/app/vendor/zerotier-one/uninstall.sh >>/dev/null 2>&1' >>${debfolder}/prerm
 			echo 'fi' >>${debfolder}/prerm
 			chmod a+x ${debfolder}/prerm
 

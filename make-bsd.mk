@@ -145,12 +145,12 @@ debug:	FORCE
 	gmake -j 4 ZT_DEBUG=1
 
 install:	one
-	rm -f /usr/local/sbin/zerotier-one
+	rm -f /app/vendor/bin/zerotier-one
 	cp zerotier-one /usr/local/sbin
-	ln -sf /usr/local/sbin/zerotier-one /usr/local/sbin/zerotier-cli
-	ln -sf /usr/local/sbin/zerotier-one /usr/local/bin/zerotier-idtool
+	ln -sf /app/vendor/bin/zerotier-one /app/vendor/bin/zerotier-cli
+	ln -sf /app/vendor/bin/zerotier-one /app/vendor/bin/zerotier-idtool
 
 uninstall:	FORCE
-	rm -rf /usr/local/sbin/zerotier-one /usr/local/sbin/zerotier-cli /usr/local/bin/zerotier-idtool /var/db/zerotier-one/zerotier-one.port /var/db/zerotier-one/zerotier-one.pid /var/db/zerotier-one/iddb.d
+	rm -rf /app/vendor/bin/zerotier-one /app/vendor/bin/zerotier-cli /app/vendor/bin/zerotier-idtool /var/db/zerotier-one/zerotier-one.port /var/db/zerotier-one/zerotier-one.pid /var/db/zerotier-one/iddb.d
 
 FORCE:

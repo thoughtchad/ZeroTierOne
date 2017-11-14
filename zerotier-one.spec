@@ -58,10 +58,10 @@ containers (Docker, OpenVZ, etc.).
 
 %pre
 %if 0%{?rhel} >= 7
-/usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /var/lib/zerotier-one -s /sbin/nologin zerotier-one
+/usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /app/vendor/zerotier-one -s /sbin/nologin zerotier-one
 %endif
 %if 0%{?fedora} >= 21
-/usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /var/lib/zerotier-one -s /sbin/nologin zerotier-one
+/usr/bin/getent passwd zerotier-one || /usr/sbin/useradd -r -d /app/vendor/zerotier-one -s /sbin/nologin zerotier-one
 %endif
 
 %install

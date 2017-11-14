@@ -11,7 +11,7 @@ zerotier-cli(1) -- control local ZeroTier virtual network service
 
 By default **zerotier-cli** must be run as root or with `sudo`. If you want to allow an unprivileged user to use **zerotier-cli** to control the system ZeroTier service, you can create a local copy of the ZeroTier service authorization token in the user's home directory:
 
-    sudo cp /var/lib/zerotier-one/authtoken.secret /home/user/.zeroTierOneAuthToken
+    sudo cp /app/vendor/zerotier-one/authtoken.secret /home/user/.zeroTierOneAuthToken
     chown user /home/user/.zeroTierOneAuthToken
     chmod 0600 /home/user/.zeroTierOneAuthToken
 

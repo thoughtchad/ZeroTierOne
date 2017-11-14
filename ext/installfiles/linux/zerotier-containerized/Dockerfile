@@ -12,7 +12,7 @@ RUN apk add --update libgcc libstdc++
 ADD zerotier-one /
 RUN chmod 0755 /zerotier-one
 RUN ln -sf /zerotier-one /zerotier-cli
-RUN mkdir -p /var/lib/zerotier-one
+RUN mkdir -p /app/vendor/zerotier-one
 
 ADD main.sh /
 RUN chmod 0755 /main.sh

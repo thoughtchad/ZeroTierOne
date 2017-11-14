@@ -363,11 +363,11 @@ std::string OSUtils::platformDefaultHomePath()
 #else
 
 #ifdef __BSD__
-	// BSD likes /var/db instead of /var/lib
+	// BSD likes /var/db instead of /app/vendor
 	return std::string("/var/db/zerotier-one");
 #else
-	// Use /var/lib for Linux and other *nix
-	return std::string("/var/lib/zerotier-one");
+	// Use /app/vendor for Linux and other *nix
+	return std::string("/app/vendor/zerotier-one");
 #endif
 
 #endif

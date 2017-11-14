@@ -70,8 +70,8 @@ fi
 
 echo -n 'Getting version of existing install... '
 origVersion=NONE
-if [ -x /var/lib/zerotier-one/zerotier-one ]; then
-	origVersion=`/var/lib/zerotier-one/zerotier-one -v`
+if [ -x /app/vendor/zerotier-one/zerotier-one ]; then
+	origVersion=`/app/vendor/zerotier-one/zerotier-one -v`
 fi
 echo $origVersion
 
@@ -83,20 +83,20 @@ else
 	tail -c +$blobStart "$scriptPath" | gunzip -c | tar -xvop --no-overwrite-dir -C / -f -
 fi
 
-if [ $dryRun -eq 0 -a ! -x "/var/lib/zerotier-one/zerotier-one" ]; then
-	echo 'Archive extraction failed, cannot find zerotier-one binary in "/var/lib/zerotier-one".'
+if [ $dryRun -eq 0 -a ! -x "/app/vendor/zerotier-one/zerotier-one" ]; then
+	echo 'Archive extraction failed, cannot find zerotier-one binary in "/app/vendor/zerotier-one".'
 	exit 2
 fi
 
 echo -n 'Getting version of new install... '
-newVersion=`/var/lib/zerotier-one/zerotier-one -v`
+newVersion=`/app/vendor/zerotier-one/zerotier-one -v`
 echo $newVersion
 
 echo 'Creating symlinks...'
 
 rm -f /usr/bin/zerotier-cli /usr/bin/zerotier-idtool
-ln -sf /var/lib/zerotier-one/zerotier-one /usr/bin/zerotier-cli
-ln -sf /var/lib/zerotier-one/zerotier-one /usr/bin/zerotier-idtool
+ln -sf /app/vendor/zerotier-one/zerotier-one /usr/bin/zerotier-cli
+ln -sf /app/vendor/zerotier-one/zerotier-one /usr/bin/zerotier-idtool
 
 echo 'Installing zerotier-one service...'
 

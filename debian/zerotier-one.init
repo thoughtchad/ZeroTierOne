@@ -12,8 +12,8 @@
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 DESC="zerotier-one daemon"
 NAME=zerotier-one
-DAEMON=/usr/sbin/zerotier-one
-PIDFILE=/var/lib/zerotier-one/zerotier-one.pid
+DAEMON=/app/vendor/bin/zerotier-one
+PIDFILE=/app/vendor/zerotier-one/zerotier-one.pid
 SCRIPTNAME=/etc/init.d/"$NAME"
 EXTRA_OPTS=-d
 

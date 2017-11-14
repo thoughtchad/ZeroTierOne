@@ -85,7 +85,7 @@ The service is controlled via the JSON API, which by default is available at 127
 
 Here's where home folders live (by default) on each OS:
 
- * **Linux**: `/var/lib/zerotier-one`
+ * **Linux**: `/app/vendor/zerotier-one`
  * **FreeBSD** / **OpenBSD**: `/var/db/zerotier-one`
  * **Mac**: `/Library/Application Support/ZeroTier/One`
  * **Windows**: `\ProgramData\ZeroTier\One` (That's for Windows 7. The base 'shared app data' folder might be different on different Windows versions.)

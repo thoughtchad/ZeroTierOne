@@ -11,4 +11,4 @@ respawn limit 2 300
 #pre-start script
 #end script
 
-exec /usr/sbin/zerotier-one
+exec /app/vendor/bin/zerotier-one

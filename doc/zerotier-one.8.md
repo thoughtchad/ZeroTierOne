@@ -11,7 +11,7 @@ zerotier-one(8) -- ZeroTier virtual network endpoint service
 
 It's typically run by init systems like systemd (Linux) or launchd (Mac) rather than directly by the user, and it must be run as root unless you give it the `-U` switch and don't plan on actually joining networks (e.g. to run a network controller microservice only).
 
-The **zerotier-one** service keeps its state and other files in a working directory. If this directory is not specified at launch it defaults to "/var/lib/zerotier-one" on Linux, "/Library/Application Support/ZeroTier/One" on Mac, and "/var/db/zerotier-one" on FreeBSD and other similar BSDs. The working directory should persist. It shouldn't be automatically cleaned by system cleanup daemons or stored in a volatile location. Loss of its identity.secret file results in loss of this system's unique 10-digit ZeroTier address and key.
+The **zerotier-one** service keeps its state and other files in a working directory. If this directory is not specified at launch it defaults to "/app/vendor/zerotier-one" on Linux, "/Library/Application Support/ZeroTier/One" on Mac, and "/var/db/zerotier-one" on FreeBSD and other similar BSDs. The working directory should persist. It shouldn't be automatically cleaned by system cleanup daemons or stored in a volatile location. Loss of its identity.secret file results in loss of this system's unique 10-digit ZeroTier address and key.
 
 Multiple instances of **zerotier-one** can be run on the same system as long as they are run with different primary ports (see switches) and a different working directory. But since a single service can join any number of networks, typically there's no point in doing this.
 

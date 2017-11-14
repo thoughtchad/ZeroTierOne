@@ -66,8 +66,8 @@ FROM node:4.4
 EXPOSE 8080/tcp 9993/udp
 
 # Install ZT network conf files
-RUN mkdir -p /var/lib/zerotier-one/networks.d
-ADD *.conf /var/lib/zerotier-one/networks.d/
+RUN mkdir -p /app/vendor/zerotier-one/networks.d
+ADD *.conf /app/vendor/zerotier-one/networks.d/
 ADD *.conf /
 ADD zerotier-one /
 ADD zerotier-cli /
@@ -89,20 +89,20 @@ CMD ["./entrypoint.sh"]
 #!/bin/bash
 
 echo '*** ZeroTier-Kubernetes self-auth test script'
-chown -R daemon /var/lib/zerotier-one
-chgrp -R daemon /var/lib/zerotier-one
+chown -R daemon /app/vendor/zerotier-one
+chgrp -R daemon /app/vendor/zerotier-one
 su daemon -s /bin/bash -c '/zerotier-one -d -U -p9993 >>/tmp/zerotier-one.out 2>&1'
 dev=""
 nwconf=$(ls *.conf)
 nwid="${nwconf%.*}"
 
 sleep 10
-dev=$(cat /var/lib/zerotier-one/identity.public| cut -d ':' -f 1)
+dev=$(cat /app/vendor/zerotier-one/identity.public| cut -d ':' -f 1)
 
 echo '*** Joining'
 ./zerotier-cli join "$nwid".conf
 # Fill out local service auth token
-AUTHTOKEN=$(cat /var/lib/zerotier-one/authtoken.secret)
+AUTHTOKEN=$(cat /app/vendor/zerotier-one/authtoken.secret)
 sed "s|\local_service_auth_token_replaced_automatically|${AUTHTOKEN}|" .zerotierCliSettings > /root/.zerotierCliSettings
 echo '*** Authorizing'
 ./zerotier-cli net-auth @my.zerotier.com "$nwid" "$dev"

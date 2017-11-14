@@ -7,11 +7,11 @@
 #              ZeroTier virtual networks. See https://www.zerotier.com/
 #
 # processname: zerotier-one
-# config: /var/lib/zerotier-one/identity.public
-# config: /var/lib/zerotier-one/identity.secret
-# config: /var/lib/zerotier-one/local.conf
-# config: /var/lib/zerotier-one/authtoken.secret
-# pidfile: /var/lib/zerotier-one/zerotier-one.pid
+# config: /app/vendor/zerotier-one/identity.public
+# config: /app/vendor/zerotier-one/identity.secret
+# config: /app/vendor/zerotier-one/local.conf
+# config: /app/vendor/zerotier-one/authtoken.secret
+# pidfile: /app/vendor/zerotier-one/zerotier-one.pid
 
 ### BEGIN INIT INFO
 # Provides: zerotier-one
@@ -35,8 +35,8 @@
 RETVAL=0
 prog="zerotier-one"
 lockfile=/var/lock/subsys/$prog
-ZT="/usr/sbin/zerotier-one"
-PID_FILE=/var/lib/zerotier-one/zerotier-one.pid
+ZT="/app/vendor/bin/zerotier-one"
+PID_FILE=/app/vendor/zerotier-one/zerotier-one.pid
 
 runlevel=$(set -- $(runlevel); eval "echo \$$#" )
 
